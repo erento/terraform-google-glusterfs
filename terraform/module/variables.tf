@@ -1,6 +1,4 @@
-variable project {
-  default = "erento-beta"
-}
+variable project {}
 
 variable region {
   default = "europe-west1"
@@ -52,7 +50,7 @@ variable network {
 }
 
 variable tags {
-  default = ["glusterfs", "gke-beta-89cc8d82-node", "nat-beta"]
+  default = ["glusterfs"]
 }
 
 variable kubernetes_endpoint_name {
