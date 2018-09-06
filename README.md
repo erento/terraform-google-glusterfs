@@ -21,7 +21,8 @@ Before continuing, please make sure you have:
 
 ## 2. Usage:
 
-a) cluster with one additional pool
+cluster setup:
+
 ```hcl
 module "cluster" {
   source         = "github.com/russmedia/terraform-glusterfs?ref=0.0.1"
@@ -95,6 +96,7 @@ tags = ["first_tag", "second_tag"]
 
 for more settings please look into ![variables.tf](variables.tf)
 
+!IMPORTANT note - to make gluster endpoint work persistently in your kubernetes cluster you need to apply glusterfs-endpoints.json (defined in variable kubernetes_endpoint_file_path) and glusterfs-svc.json (located in files folder)
 
 ## 3. Authors
 
