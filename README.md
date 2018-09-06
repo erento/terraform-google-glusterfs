@@ -21,11 +21,11 @@ Before continuing, please make sure you have:
 
 ## 2. Usage:
 
-cluster setup:
+define cluster module:
 
 ```hcl
 module "cluster" {
-  source         = "github.com/russmedia/terraform-glusterfs?ref=0.0.1"
+  source         = "github.com/russmedia/terraform-google-glusterfs?ref=0.0.1"
   server_prefix  = "${var.server_prefix}"
   disk_prefix    = "${var.disk_prefix}"
   subnet_mask    = "${var.subnet_mask}"
