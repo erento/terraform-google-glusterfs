@@ -49,7 +49,8 @@ variable disk_prefix {
 }
 
 variable data_disk_size {
-  default = "100"
+  default     = "100"
+  description = "GlusterFS data disk size in GB"
 }
 
 variable machine_type {
@@ -57,7 +58,8 @@ variable machine_type {
 }
 
 variable boot_disk_size {
-  default = "10"
+  default     = "10"
+  description = "VMs disk boot size in GB"
 }
 
 variable cluster_size {
