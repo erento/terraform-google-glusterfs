@@ -96,7 +96,32 @@ tags = ["first_tag", "second_tag"]
 
 for more settings please look into ![variables.tf](variables.tf)
 
-!IMPORTANT note - to make gluster endpoint work persistently in your kubernetes cluster you need to apply glusterfs-endpoints.json (defined in variable kubernetes_endpoint_file_path) and glusterfs-svc.json (located in files folder)
+### 2.1. Connecting with Kubernetes
+
+1. Apply Kubernetes endpoints and svc files to the cluster:
+```
+kubectl apply -f glusterfs-endpoints.json
+kubectl apply -f files/glusterfs-svc.json
+```
+IMPORTANT note - to make gluster endpoint work persistently in your kubernetes cluster you need to apply glusterfs-endpoints.json (defined in variable kubernetes_endpoint_file_path) and glusterfs-svc.json (located in files folder)
+
+2. Sample mount in deployment:
+```yml
+(...)
+  spec:
+      containers:
+      - image: nginx
+        (...)
+        volumeMounts:
+        - mountPath: /mnt/glusterfs
+          name: glusterfs-vol
+      volumes:
+      - name: glusterfs-vol
+        glusterfs:
+          endpoints: glusterfs-cluster
+          path: volume_name
+          readOnly: false
+```
 
 ## 3. Authors
 
