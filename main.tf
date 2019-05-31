@@ -27,7 +27,7 @@ resource "google_compute_instance" "default" {
 
   network_interface {
     subnetwork = "${var.subnetwork}"
-    address    = "${cidrhost(var.subnet_mask, -count.index - var.ip_offset)}" # This takes last 3 IPs of the subnet (they are usually free - if not ip_offset can be uset to shift ips)
+    network_ip = "${cidrhost(var.subnet_mask, -count.index - var.ip_offset)}" # This takes last 3 IPs of the subnet (they are usually free - if not ip_offset can be uset to shift ips)
 
     access_config {
       // Ephemeral IP
@@ -35,7 +35,7 @@ resource "google_compute_instance" "default" {
   }
 
   metadata {
-    foo = "bar"
+    VmDnsSetting = "GlobalOnly"
   }
 
   metadata_startup_script = "${element(formatlist("%v", data.template_file.provision_script.*.rendered), count.index)}"
