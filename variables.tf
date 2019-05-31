@@ -75,7 +75,14 @@ variable image {
 }
 
 variable tags {
-  type = "list"
+  type    = "list"
+  default = ["gluster"]
+}
+
+variable allowed_source_tags {
+  description = "Source tags on Google Cloud that will have access to gluster"
+  type        = "list"
+  default     = ["gluster"]
 }
 
 variable kubernetes_endpoint_name {

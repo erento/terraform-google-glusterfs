@@ -17,6 +17,7 @@ Before continuing, please make sure you have:
 - outputs ready to use kubernetes endpoint config in json
 - configurable subnet masks
 - configurable disk sizes and types
+- configure which network tags will be allowed to access
 
 
 ## 2. Usage:
@@ -91,10 +92,14 @@ project = "your-project-name"
 
 subnet_mask = "10.0.0.0/24"
 
-tags = ["first_tag", "second_tag"]
+tags = ["gluster", "first_tag", "second_tag"]
+
+allowed_source_tags = ["gluster", "first_tag", "second_tag"]
 ```
 
 for more settings please look into ![variables.tf](variables.tf)
+
+**Important** Please make sure that your main glusterfs tag is defined in allowed_source_tags - this will allow nodes to talk to each other. (by default tags = ["gluster"] and allowed_source_tags = ["gluster"])
 
 ### 2.1. Connecting with Kubernetes
 
