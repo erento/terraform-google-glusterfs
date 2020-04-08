@@ -10,6 +10,9 @@ Before continuing, please make sure you have:
 * A [Google Cloud](https://cloud.google.com) account
 * The [Google Cloud SDK](https://cloud.google.com/sdk/) installed
 
+## Compatibility
+This module is meant for use with Terraform 0.12. If you haven't upgraded and need a Terraform 0.11.x-compatible version of this module, the last released version intended for Terraform 0.11.x is 1.0.
+
 ## 1. Features
 
 - multi-node glusterfs server is created 
