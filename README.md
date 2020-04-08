@@ -11,7 +11,7 @@ Before continuing, please make sure you have:
 * The [Google Cloud SDK](https://cloud.google.com/sdk/) installed
 
 ## Compatibility
-This module is meant for use with Terraform 0.12. If you haven't upgraded and need a Terraform 0.11.x-compatible version of this module, the last released version intended for Terraform 0.11.x is 1.0.
+This module is meant for use with Terraform 0.12. If you haven't upgraded and need a Terraform 0.11.x-compatible version of this module, the last released version intended for Terraform 0.11.x is 1.0.0
 
 ## 1. Features
 
@@ -29,11 +29,11 @@ define cluster module, the example setup can look like::
 
 ```hcl
 module "cluster" {
-  source              = "github.com/erento/terraform-google-glusterfs?ref=1.0.0"
+  source              = "github.com/erento/terraform-google-glusterfs?ref=2.0.0"
   server_prefix       = "glusterfs-server"
   data_disk_prefix    = "glusterfs-brick"
   subnet_mask         = "10.0.0.0/24"
-  ip_offset           = "${var.ip_offset}"
+  ip_offset           = var.ip_offset
   data_disk_size      = "500"
   network             = "your-exisiting-network"
   subnetwork          = "subnetwork-name-that-module-will-create-for-you"
