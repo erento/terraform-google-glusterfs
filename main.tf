@@ -140,4 +140,3 @@ resource "null_resource" "export_rendered_template" {
     update_config = timestamp()
   }
 }
-

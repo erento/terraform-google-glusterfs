@@ -122,4 +122,3 @@ variable "vm_dns_setting" {
 EOF
 
 }
-
