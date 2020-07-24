@@ -3,5 +3,5 @@ output "disks" {
 }
 
 output "static_ips" {
-  value = google_compute_instance.default.*.network_interface.0.address
+  value = google_compute_instance.default.*.network_interface.0.network_ip
 }
