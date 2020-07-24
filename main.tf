@@ -1,7 +1,7 @@
 provider "google" {
   project = var.project
   region  = var.region
-  version = "~> 2.20.0"
+  version = "~> 3.28.0"
 }
 
 resource "google_compute_instance" "default" {
@@ -92,7 +92,7 @@ data "template_file" "endpoint" {
 
   vars = {
     ip = element(
-      google_compute_instance.default.*.network_interface.0.address,
+      google_compute_instance.default.*.network_interface.0.network_ip,
       count.index,
     )
   }
