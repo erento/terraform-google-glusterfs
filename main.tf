@@ -10,6 +10,8 @@ resource "google_compute_instance" "default" {
   machine_type = var.machine_type
   zone         = "${var.region}-${var.zones[count.index]}"
 
+  allow_stopping_for_update = true
+
   can_ip_forward = true
 
   tags = var.tags
