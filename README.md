@@ -21,6 +21,7 @@ This module is meant for use with Terraform 0.12. If you haven't upgraded and ne
 - configurable subnet masks
 - configurable disk sizes and types
 - configure which network tags will be allowed to access
+- option to specify user and/or group ownership for the volumes
 
 
 ## 2. Usage:
