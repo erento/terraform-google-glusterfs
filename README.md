@@ -21,6 +21,7 @@ This module is meant for use with Terraform 0.12. If you haven't upgraded and ne
 - configurable subnet masks
 - configurable disk sizes and types
 - configure which network tags will be allowed to access
+- option to specify user and/or group ownership for the volumes
 
 
 ## 2. Usage:
@@ -29,7 +30,7 @@ define cluster module, the example setup can look like::
 
 ```hcl
 module "cluster" {
-  source              = "github.com/erento/terraform-google-glusterfs?ref=2.0.0"
+  source              = "github.com/erento/terraform-google-glusterfs?ref=2.1.0"
   server_prefix       = "glusterfs-server"
   data_disk_prefix    = "glusterfs-brick"
   subnet_mask         = "10.0.0.0/24"

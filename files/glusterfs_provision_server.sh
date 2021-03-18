@@ -26,6 +26,12 @@ if [[ $HOSTNAME =~ -0$ ]]; then
 	for volume_name in ${volume_names}; do
 		if [[ -z $(sudo gluster volume list | grep $volume_name) ]]; then
 			sudo gluster volume create $volume_name replica ${replicas_number} $(for peer in $CLUSTER_SIZE; do echo -n "${server_prefix}-$peer:/data/brick1/$volume_name "; done) force
+			if [ ! -z "${user}" ]; then
+				sudo gluster volume set $volume_name storage.owner-uid `id -u ${user}`
+			fi
+			if [ ! -z "${group}" ]; then
+				sudo gluster volume set $volume_name storage.owner-gid `id -u ${group}`
+			fi
 			sudo gluster volume start $volume_name
 		fi
 	done

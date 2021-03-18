@@ -122,3 +122,13 @@ variable "vm_dns_setting" {
 EOF
 
 }
+
+variable "user" {
+  description = "User ownership of the volumes"
+  default = ""
+}
+
+variable "group" {
+  description = "Group ownership of the volumes"
+  default = ""
+}

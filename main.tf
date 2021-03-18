@@ -82,6 +82,8 @@ data "template_file" "provision_script" {
     cluster_size    = var.cluster_size
     server_prefix   = var.server_prefix
     volume_names    = join(" ", var.volume_names)
+    group           = var.group
+    user            = var.user
     replicas_number = var.replicas_number
   }
 }
