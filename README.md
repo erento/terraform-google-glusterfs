@@ -30,7 +30,7 @@ define cluster module, the example setup can look like::
 
 ```hcl
 module "cluster" {
-  source              = "github.com/erento/terraform-google-glusterfs?ref=2.0.0"
+  source              = "github.com/erento/terraform-google-glusterfs?ref=2.1.0"
   server_prefix       = "glusterfs-server"
   data_disk_prefix    = "glusterfs-brick"
   subnet_mask         = "10.0.0.0/24"
