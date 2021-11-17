@@ -128,13 +128,3 @@ resource "google_compute_firewall" "default" {
   source_tags = var.allowed_source_tags
   target_tags = var.tags
 }
-
-resource "null_resource" "export_rendered_template" {
-  provisioner "local-exec" {
-    command = "cat > ${var.kubernetes_endpoint_file_path} <<EOL\n${data.template_file.kubernetes_endpoints.rendered}\nEOL"
-  }
-
-  triggers = {
-    update_config = timestamp()
-  }
-}
