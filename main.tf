@@ -1,9 +1,3 @@
-provider "google" {
-  project = var.project
-  region  = var.region
-  version = "~> 3.28.0"
-}
-
 resource "google_compute_instance" "default" {
   count        = var.cluster_size
   name         = "${var.server_prefix}-${count.index}"
