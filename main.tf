@@ -1,14 +1,10 @@
-provider "google" {
-  project = var.project
-  region  = var.region
-  version = "~> 2.20.0"
-}
-
 resource "google_compute_instance" "default" {
   count        = var.cluster_size
   name         = "${var.server_prefix}-${count.index}"
   machine_type = var.machine_type
   zone         = "${var.region}-${var.zones[count.index]}"
+
+  allow_stopping_for_update = true
 
   can_ip_forward = true
 
@@ -94,7 +90,7 @@ data "template_file" "endpoint" {
 
   vars = {
     ip = element(
-      google_compute_instance.default.*.network_interface.0.address,
+      google_compute_instance.default.*.network_interface.0.network_ip,
       count.index,
     )
   }
@@ -131,14 +127,4 @@ resource "google_compute_firewall" "default" {
 
   source_tags = var.allowed_source_tags
   target_tags = var.tags
-}
-
-resource "null_resource" "export_rendered_template" {
-  provisioner "local-exec" {
-    command = "cat > ${var.kubernetes_endpoint_file_path} <<EOL\n${data.template_file.kubernetes_endpoints.rendered}\nEOL"
-  }
-
-  triggers = {
-    update_config = timestamp()
-  }
 }
